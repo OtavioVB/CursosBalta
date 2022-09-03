@@ -2,7 +2,7 @@
 
 namespace Balta.Domain.Contracts.Infrascructure;
 
-public interface ICursoRepository
+public interface IRepositoryCurso
 {
     public List<Curso> ListarTodosOsCursos();
     public Task CreateAsync(Curso curso);

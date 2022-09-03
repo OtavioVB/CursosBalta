@@ -1,0 +1,46 @@
+﻿@model Balta.Domain.Models.Post.PCriarNovoModulo;
+@{
+    ViewData["Title"] = "Adicionar módulo";
+}
+<h1>Adicionar novo módulo</h1>
+
+@{
+    if (ViewBag.Cursos.Count > 0)
+    {
+        <form asp-controller="Modulo" asp-action="Adicionar">
+            <div class="mb-3">
+                <label for="title" class="form-label">Título do Módulo</label>
+                <input asp-for="Titulo" type="text" class="form-control" id="title" placeholder="Título do Módulo">
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">Selecione de qual curso é esse módulo</label>
+                <select asp-for ="IdentificadorCurso" class="form-select" aria-label="Selecionar curso">
+                    @{
+                        for (var i = 0; i < ViewBag.Cursos.Count; i++)
+                        {
+                            <option value="@ViewBag.Cursos[i].Identificador">@ViewBag.Cursos[i].Titulo</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="desc" class="form-label">Descrição do Módulo</label>
+                <input asp-for="Descricao" type="text" class="form-control" id="desc" placeholder="Descrição">
+            </div>
+            <div class="mb-3">
+                <label for="ordem" class="form-label">Ordem do Módulo</label>
+                <input asp-for="Ordem" type="number" class="form-control" id="ordem" placeholder="Posição">
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary mb-3">Adicionar Módulo</button>
+                <a asp-action="Index">Sair</a>
+            </div>
+        </form>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            Não é possível adicionar um novo módulo sem haver pelo menos <b>um curso criado</b>. <a asp-controller="Curso" asp-action="Index">Clique aqui para criar um curso</a>
+        </div>
+    }
+}

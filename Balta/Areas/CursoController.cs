@@ -10,9 +10,8 @@ namespace Balta.Areas.Cursos.Controllers;
 [Authorize]
 public class CursoController : Controller
 {
-    [Route("{page=Home}")]
     [AllowAnonymous]
-    public IActionResult Index([FromServices] ICursoRepository cursoRepository)
+    public IActionResult Index([FromServices] IRepositoryCurso cursoRepository)
     {
         var cursos = cursoRepository.ListarTodosOsCursos();
         ViewBag.listaCursos = cursos;
@@ -20,7 +19,7 @@ public class CursoController : Controller
     }
 
     [Route("Adicionar")]
-    public async Task<IActionResult> Adicionar([FromServices] ICursoRepository cursoRepository, PCriarNovoCurso criarNovoCurso)
+    public async Task<IActionResult> Adicionar([FromServices] IRepositoryCurso cursoRepository, PCriarNovoCurso criarNovoCurso)
     {
         var curso = new Curso();
         curso.Titulo = criarNovoCurso.Titulo;
@@ -34,5 +33,11 @@ public class CursoController : Controller
     public IActionResult Criar()
     {
         return View("Pages/Curso/Criar.cshtml");
+    }
+
+    [Route("Listar/{identificador}")]
+    public IActionResult Listar([FromRoute] string identificador)
+    {
+        return View();
     }
 }

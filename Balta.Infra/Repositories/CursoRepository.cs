@@ -4,7 +4,7 @@ using Balta.Infra.Data;
 
 namespace Balta.Infra.Repositories;
 
-public class CursoRepository : ICursoRepository
+public class CursoRepository : IRepositoryCurso
 {
     private readonly DataContext _dataContext;
 

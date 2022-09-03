@@ -1,0 +1,42 @@
+﻿@model Balta.Domain.Models.Post.PCriarNovaAula;
+@{
+    ViewData["Title"] = "Adicionar nova aula | Balta";
+}
+
+<h1>Adicionar nova aula</h1>
+@{
+    if (ViewBag.Modulos.Count > 0)
+    {
+        <form asp-controller="Aula" asp-action="Adicionar">
+            <div class="mb-3">
+                <label for="title" class="form-label">Título da Aula</label>
+                <input asp-for="Titulo" type="text" class="form-control" id="title" placeholder="Título da aula">
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">Selecione de qual curso é esse módulo</label>
+                <select asp-for="IdentificadorModulo" class="form-select" aria-label="Selecionar curso">
+                    @{
+                        for (var i = 0; i < ViewBag.Modulos.Count; i++)
+                        {
+                            <option value="@ViewBag.Modulos[i].Identificador">@ViewBag.Modulos[i].Titulo</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="desc" class="form-label">Descrição da Aula</label>
+                <input asp-for="Descricao" type="text" class="form-control" id="desc" placeholder="Descrição">
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary mb-3">Adicionar Aula</button>
+                <a asp-controller="Modulo" asp-action="Index">Sair</a>
+            </div>
+        </form>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            Não é possível adicionar uma nova aula sem haver pelo menos <b>um módulo criado</b>. <a asp-controller="Modulo" asp-action="Index">Clique aqui para criar um módulo</a>
+        </div>
+    }
+}

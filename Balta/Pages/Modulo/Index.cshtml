@@ -1,0 +1,22 @@
+﻿<h1>Módulos da plataforma</h1>
+
+@{
+    if (ViewBag.listaModulos.Count > 0)
+    {
+        for (int i = 0; i < ViewBag.listaModulos.Count; i++)
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@ViewBag.listaModulos[i].Titulo</h5>
+                    <p class="card-text">@ViewBag.listaModulos[i].Descricao</p>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            Nenhum módulo foi adicionado ainda na nossa plataforma! <a asp-controller="Modulo" asp-action="Criar">Clique aqui para criar um novo</a>
+        </div>
+    }
+}
