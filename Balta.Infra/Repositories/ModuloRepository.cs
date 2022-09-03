@@ -8,7 +8,7 @@ public class ModuloRepository : IRepositoryModulo
 {
     private readonly DataContext _dataContext;
 
-    public CursoRepository(DataContext dataContext)
+    public ModuloRepository(DataContext dataContext)
     {
         _dataContext = dataContext;
     }
