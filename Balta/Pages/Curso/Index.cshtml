@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<h1>Cursos da plataforma</h1>
+
+@{
+    if (ViewBag.listaCursos.Count > 0)
+    {
+        for (int i = 0; i < ViewBag.listaCursos.Count; i++)
+        {
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">@ViewBag.listaCursos[i].Titulo</h5>
+                <p class="card-text">@ViewBag.listaCursos[i].Duracao</p>
+                <p class="card-text">@ViewBag.listaCursos[i].Tag</p>
+              </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            Nenhum curso foi adicionado ainda na nossa plataforma!
+        </div>
+    }
+}

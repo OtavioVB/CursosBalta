@@ -1,0 +1,22 @@
+﻿@model Balta.Domain.Models.Post.PCriarNovoCurso;
+@{
+    ViewData["Title"] = "Adicionar novo curso";
+}
+<h1>Crie um novo curso para a plataforma</h1>
+<form asp-controller="Curso" asp-action="Adicionar">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Título</label>
+        <input asp-for="Titulo" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Título do curso">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Tag</label>
+        <input asp-for="Tag" type="number" class="form-control" id="exampleFormControlInput1" placeholder="Ex.: 1234">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Duração</label>
+        <input asp-for="Duracao" type="time" class="form-control" id="exampleFormControlInput1" placeholder="Duração em minutos">
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary mb-3">Adicionar</button>
+    </div>
+</form>
