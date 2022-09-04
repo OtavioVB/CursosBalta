@@ -15,7 +15,7 @@ public class AulaController : Controller
     public IActionResult Criar([FromServices] IRepositoryModulo repositoryModulo)
     {
         ViewBag.Modulos = repositoryModulo.ListarModulos();
-        return View();
+        return View("Pages/Aula/Criar.cshtml");
     }
 
     [Route("Adicionar")]
@@ -27,7 +27,7 @@ public class AulaController : Controller
         aula.IdentificadorModulo = criarNovaAula.IdentificadorModulo;
         aula.Url = UrlFunctions.ObterUrlAmigavel(criarNovaAula.Titulo);
         repositoryAula.CriarNovaAula(aula);
-        return View();
+        return View("Pages/Aula/Criar.cshtml");
     }
 
     [Route("Visualizar/{url}")]
@@ -39,7 +39,7 @@ public class AulaController : Controller
             if (aula != null)
             {
                 ViewBag.Aula = aula;
-                return View();
+                return View("Pages/Aula/Visualizar.cshtml");
             }
             else
             {
