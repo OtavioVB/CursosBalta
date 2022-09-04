@@ -9,9 +9,9 @@ public class DataContext : DbContext
     public DbSet<Modulo> Modulos { get; set; }
     public DbSet<Aula> Aulas { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public DataContext(DbContextOptions<DataContext> options)
+        : base(options)
     {
-        optionsBuilder.UseSqlite("Data Source=balta.db", b => b.MigrationsAssembly("Balta"));
         Database.Migrate();
     }
 

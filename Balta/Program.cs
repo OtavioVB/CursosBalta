@@ -18,7 +18,7 @@ public class Program
         builder.Services.AddTransient<IRepositoryModulo, ModuloRepository>();
         builder.Services.AddTransient<IRepositoryAula, AulaRepository>();
 
-        builder.Services.AddDbContext<DataContext>(); 
+        builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(connectionString, b => b.MigrationsAssembly("Balta"))); 
         builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connectionString));
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
