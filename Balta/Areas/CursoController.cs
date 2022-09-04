@@ -15,7 +15,7 @@ public class CursoController : Controller
     {
         var cursos = cursoRepository.ListarTodosOsCursos();
         ViewBag.listaCursos = cursos;
-        return View("Pages/Curso/Index.cshtml");
+        return View();
     }
 
     [Route("Adicionar")]
@@ -32,7 +32,7 @@ public class CursoController : Controller
     [Route("Criar")]
     public IActionResult Criar()
     {
-        return View("Pages/Curso/Criar.cshtml");
+        return View();
     }
 
     [Route("Listar/{identificador}")]
@@ -43,7 +43,7 @@ public class CursoController : Controller
         if (numeroValido is true)
         {
             ViewBag.Curso = cursoRepository.ListarInformacoesDeCurso(valor);
-            return View("Pages/Curso/Listar.cshtml");
+            return View();
         }
         return RedirectToAction("Index");
     }
