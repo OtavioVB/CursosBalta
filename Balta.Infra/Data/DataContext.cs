@@ -9,15 +9,19 @@ public class DataContext : DbContext
     public DbSet<Modulo> Modulos { get; set; }
     public DbSet<Aula> Aulas { get; set; }
 
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+        Database.EnsureCreated();
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite("Data Source=balta.db", b => b.MigrationsAssembly("Balta"));
-        Database.EnsureCreated();
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-
         // Primary Key's
         builder.Entity<Curso>().HasKey(p => p.Identificador);
         builder.Entity<Curso>().Property(p => p.Identificador).ValueGeneratedOnAdd();
