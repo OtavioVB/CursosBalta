@@ -14,13 +14,12 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
-        // Dependences
         builder.Services.AddTransient<IRepositoryCurso, CursoRepository>();
         builder.Services.AddTransient<IRepositoryModulo, ModuloRepository>();
         builder.Services.AddTransient<IRepositoryAula, AulaRepository>();
 
-        builder.Services.AddDbContext<DataContext>(); //"{_appEnv.ApplicationBasePath}/" 
-        builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(AppContext.BaseDirectory + "/" +connectionString));
+        builder.Services.AddDbContext<DataContext>(); 
+        builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connectionString));
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
           

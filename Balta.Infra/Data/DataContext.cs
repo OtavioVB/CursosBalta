@@ -12,6 +12,7 @@ public class DataContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite("Data Source=balta.db", b => b.MigrationsAssembly("Balta"));
+        Database.EnsureCreated();
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
