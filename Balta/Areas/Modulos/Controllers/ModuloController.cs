@@ -4,7 +4,7 @@ using Balta.Domain.Models.Post;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Balta.Areas;
+namespace Balta.Areas.Modulos.Controllers;
 
 [Authorize]
 [Route("Modulos")]

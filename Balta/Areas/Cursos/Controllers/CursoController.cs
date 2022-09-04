@@ -15,7 +15,7 @@ public class CursoController : Controller
     {
         var cursos = cursoRepository.ListarTodosOsCursos();
         ViewBag.listaCursos = cursos;
-        return View();
+        return View("Views/Curso/Index.cshtml");
     }
 
     [Route("Adicionar")]

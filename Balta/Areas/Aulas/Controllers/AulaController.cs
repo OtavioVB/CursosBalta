@@ -5,7 +5,7 @@ using Balta.Domain.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Balta.Areas;
+namespace Balta.Areas.Aulas.Controllers;
 
 [Route("Aulas")]
 [Authorize]
@@ -33,7 +33,7 @@ public class AulaController : Controller
     [Route("Visualizar/{url}")]
     public IActionResult Visualizar([FromRoute] string url, [FromServices] IRepositoryAula repositoryAula)
     {
-        if(UrlFunctions.VerificarUrlAmigavel(url) is true)
+        if (UrlFunctions.VerificarUrlAmigavel(url) is true)
         {
             var aula = repositoryAula.BuscarAula(url);
             if (aula != null)
@@ -48,7 +48,7 @@ public class AulaController : Controller
         }
         else
         {
-            return RedirectToAction("Index","Curso");
+            return RedirectToAction("Index", "Curso");
         }
     }
 }
