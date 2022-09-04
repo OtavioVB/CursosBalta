@@ -26,8 +26,8 @@ public class Program
           
         builder.Services.AddRazorPages();
         var app = builder.Build();
-        if (app.Environment.IsDevelopment()) app.UseMigrationsEndPoint();
-        else app.UseExceptionHandler("/Error"); app.UseHsts();
+        app.UseMigrationsEndPoint();
+        app.UseHsts();
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
