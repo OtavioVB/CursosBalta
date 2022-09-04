@@ -26,7 +26,7 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Rodar Migrations
-      run: 
+        run: 
         dotnet ef migrations add PlataformaMigration -c DataContext --project Balta
         dotnet ef migrations add UserMigration -c ApplicationDbContext --project Balta
         dotnet ef database update --project Balta -c DataContext
