@@ -9,7 +9,7 @@ public class DataContext : DbContext
     public DbSet<Modulo> Modulos { get; set; }
     public DbSet<Aula> Aulas { get; set; }
 
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+    public DataContext(DbContextOptions<DataContext> options)
         : base(options)
     {
         Database.EnsureCreated();
