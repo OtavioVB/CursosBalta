@@ -6,7 +6,9 @@ Esse é um projeto dedicado ao processo seletivo de admissão do [Balta](https:/
 2. Cada curso terá um ou mais módulos.
 3. Cada módulo conterá mais que uma aula.
 4. As aulas conterão informações como Título da Aula, Descrição da Aula.
-5. O usuário poderá cadastrar e visualizar novas aulas, módulos e cursos.]
+5. O usuário poderá cadastrar e visualizar novas aulas, módulos e cursos.
+
+Vale ressaltar que a grande pretensão do teste é verificar a capacidade em desenvolver uma aplicação do começo ao fim, assim sendo, é necessário o deployment da aplicação no `Azure`.
 
 ## Autor
 - Otávio Villas Boas Simoncini Carmanini
