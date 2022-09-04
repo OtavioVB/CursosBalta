@@ -16,12 +16,20 @@ public class CursoRepository : IRepositoryCurso
         _dataContext.Database.EnsureCreated();
     }
 
-    public List<Curso> ListarTodosOsCursos()
+    public List<Curso>? ListarTodosOsCursos()
     {
         var listaCursos = new List<Curso>();
-        foreach (var curso in _dataContext.Cursos)
+
+        if (_dataContext.Cursos != null)
         {
-            listaCursos.Add(curso);
+            foreach (var curso in _dataContext.Cursos)
+            {
+                listaCursos.Add(curso);
+            }
+        }
+        else
+        {
+            return null;
         }
 
         return listaCursos;
