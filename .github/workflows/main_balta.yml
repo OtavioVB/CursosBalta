@@ -22,13 +22,15 @@ jobs:
           dotnet-version: '6.0.x'
           include-prerelease: true
 
+      - name: Rodar Migrations
+        run: dotnet ef database update
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
-      - name: dotnet publish
+      - name: Publicar Projeto
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
-      - name: Upload artifact for deployment job
+      - name: Upar artefato para trabalho
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
