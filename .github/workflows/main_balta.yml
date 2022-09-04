@@ -27,10 +27,10 @@ jobs:
 
       - name: Rodar Migrations
         run: 
-        dotnet ef migrations add PlataformaMigration -c DataContext --project Balta
-        dotnet ef migrations add UserMigration -c ApplicationDbContext --project Balta
-        dotnet ef database update --project Balta -c DataContext
-        dotnet ef database update --project Balta -c ApplicationDbContext
+          dotnet ef migrations add PlataformaMigration -c DataContext --project Balta
+          dotnet ef migrations add UserMigration -c ApplicationDbContext --project Balta
+          dotnet ef database update --project Balta -c DataContext
+          dotnet ef database update --project Balta -c ApplicationDbContext
 
       - name: Publicar Projeto
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
