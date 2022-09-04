@@ -11,6 +11,7 @@ public class AulaRepository : IRepositoryAula
     public AulaRepository(DataContext dataContext)
     {
         _dataContext = dataContext;
+        _dataContext.Database.EnsureCreated();
     }
 
     public async Task CriarNovaAula(Aula aula)

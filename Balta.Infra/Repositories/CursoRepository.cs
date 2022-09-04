@@ -13,6 +13,7 @@ public class CursoRepository : IRepositoryCurso
     {
         _repositoryModulo = repositoryModulo;
         _dataContext = dataContext;
+        _dataContext.Database.EnsureCreated();
     }
 
     public List<Curso> ListarTodosOsCursos()

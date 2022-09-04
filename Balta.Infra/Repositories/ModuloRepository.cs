@@ -14,6 +14,7 @@ public class ModuloRepository : IRepositoryModulo
     {
         _repositoryAula = repositoryAula;
         _dataContext = dataContext;
+        _dataContext.Database.EnsureCreated();
     }
 
     public async Task CriarNovoModuloAsync(Modulo modulo)
