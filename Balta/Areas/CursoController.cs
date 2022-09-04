@@ -36,8 +36,15 @@ public class CursoController : Controller
     }
 
     [Route("Listar/{identificador}")]
-    public IActionResult Listar([FromRoute] string identificador)
+    public IActionResult Listar([FromRoute] string identificador, [FromServices] IRepositoryCurso cursoRepository)
     {
-        return View();
+        bool numeroValido = int.TryParse(identificador, out int valor);
+
+        if (numeroValido is true)
+        {
+            ViewBag.Curso = cursoRepository.ListarInformacoesDeCurso(valor);
+            return View("Pages/Curso/Listar.cshtml");
+        }
+        return RedirectToAction("Index");
     }
 }

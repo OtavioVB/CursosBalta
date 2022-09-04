@@ -7,9 +7,11 @@ namespace Balta.Infra.Repositories;
 public class CursoRepository : IRepositoryCurso
 {
     private readonly DataContext _dataContext;
+    private readonly IRepositoryModulo _repositoryModulo;
 
-    public CursoRepository(DataContext dataContext)
+    public CursoRepository(DataContext dataContext, IRepositoryModulo repositoryModulo)
     {
+        _repositoryModulo = repositoryModulo;
         _dataContext = dataContext;
     }
 
@@ -22,6 +24,23 @@ public class CursoRepository : IRepositoryCurso
         }
 
         return listaCursos;
+    }
+
+    public Curso? ListarInformacoesDeCurso(int identificador)
+    {
+        var cursoIdentificado = new Curso();
+        bool existeCurso = false;
+        foreach (var curso in _dataContext.Cursos)
+        {
+            if (curso.Identificador == identificador) 
+            {
+                cursoIdentificado = curso;
+                existeCurso = true;
+                break;
+            }
+        }
+        cursoIdentificado.Modulos = _repositoryModulo.ListarModulos(cursoIdentificado.Identificador);
+        return existeCurso ? cursoIdentificado : null;
     }
 
     public async Task CreateAsync(Curso curso)

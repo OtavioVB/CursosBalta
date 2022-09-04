@@ -6,5 +6,5 @@ public class Curso
     public string Titulo { get; set; }
     public int Tag { get; set; }
     public TimeSpan Duracao { get; set; }
-    public List<Modulo> Modulos { get; set; }
+    public List<Modulo>? Modulos { get; set; }
 }

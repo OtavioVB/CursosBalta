@@ -5,7 +5,7 @@
 
 <h1>Adicionar nova aula</h1>
 @{
-    if (ViewBag.Modulos.Count > 0)
+    if (ViewBag.Modulos != null)
     {
         <form asp-controller="Aula" asp-action="Adicionar">
             <div class="mb-3">

@@ -29,4 +29,26 @@ public class AulaController : Controller
         repositoryAula.CriarNovaAula(aula);
         return View("Pages/Aulas/Criar.cshtml");
     }
+
+    [Route("Visualizar/{url}")]
+    public IActionResult Visualizar([FromRoute] string url, [FromServices] IRepositoryAula repositoryAula)
+    {
+        if(UrlFunctions.VerificarUrlAmigavel(url) is true)
+        {
+            var aula = repositoryAula.BuscarAula(url);
+            if (aula != null)
+            {
+                ViewBag.Aula = aula;
+                return View("Pages/Aulas/Visualizar.cshtml");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Curso");
+            }
+        }
+        else
+        {
+            return RedirectToAction("Index","Curso");
+        }
+    }
 }

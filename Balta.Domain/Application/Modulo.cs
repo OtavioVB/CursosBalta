@@ -8,5 +8,5 @@ public class Modulo
     public string Titulo { get; set; }
     public string Descricao { get; set; }
     public int Ordem { get; set; }
-    public List<Aula> Aulas { get; set; }
+    public List<Aula>? Aulas { get; set; }
 }

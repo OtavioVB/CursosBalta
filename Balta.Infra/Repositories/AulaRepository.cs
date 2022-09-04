@@ -19,10 +19,32 @@ public class AulaRepository : IRepositoryAula
         await _dataContext.SaveChangesAsync();
     }
     
-    public List<Aula> ListarAulas(Modulo modulo)
+    public List<Aula>? ListarAulas(int moduloIdentificador)
     {
         var listaAulas = new List<Aula>();
-        foreach(var aula in _dataContext.Aulas) listaAulas.Add(aula);
-        return listaAulas;
+        bool possuiAlgumaAula = false;
+        foreach (var aula in _dataContext.Aulas) 
+        {
+            if (aula.IdentificadorModulo == moduloIdentificador)
+            {
+                listaAulas.Add(aula);
+                possuiAlgumaAula = true;
+                continue;
+            }
+        }
+        return possuiAlgumaAula ? listaAulas : null;
+    }
+
+    public Aula? BuscarAula(string url)
+    {
+        foreach (var aula in _dataContext.Aulas)
+        {
+            if (aula.Url == url)
+            {
+                return aula;
+            }
+        }
+
+        return null;
     }
 }

@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Informações do Curso";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h1>Curso @ViewBag.Curso.Tag | @ViewBag.Curso.Titulo <span class="badge bg-secondary">Novo</span></h1>
+
+<h2>Módulos do Curso</h2>
+@{
+    if (ViewBag.Curso.Modulos != null)
+    {
+        for (var i = 0; i < ViewBag.Curso.Modulos.Count; i++)
+        {
+            <div class="mt-4">
+                <h3>@ViewBag.Curso.Modulos[i].Titulo</h3>
+                <p>@ViewBag.Curso.Modulos[i].Descricao</p>
+                @{
+                    if (ViewBag.Curso.Modulos[i].Aulas != null)
+                    {
+                        <div class="accordion" id="accordionExample">
+                            @{
+                                for (int k = 0; k < ViewBag.Curso.Modulos[i].Aulas.Count; k++)
+                                {
+                                    int kNovo = k + 1;
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="heading-@k.ToString()">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@k.ToString()" aria-expanded="true" aria-controls="collapse-@k.ToString()">
+                                                <span class="badge bg-secondary">@kNovo.ToString()</span>&nbsp;&nbsp; @ViewBag.Curso.Modulos[i].Aulas[k].Titulo
+                                            </button>
+                                        </h2>
+                                        <div id="collapse-@k.ToString()" class="accordion-collapse collapse show" aria-labelledby="heading-@k.ToString()" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                @ViewBag.Curso.Modulos[i].Aulas[k].Descricao <a href="../../Aulas/Visualizar/@ViewBag.Curso.Modulos[i].Aulas[k].Url">Clique aqui para visualizar a aula</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-secondary" role="alert">
+                            Esse módulo ainda não contém aulas cadastradas nele.
+                        </div>
+                    }
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-secondary" role="alert">
+            Esse curso está disponível apenas para visualização, pois ainda não há <b>módulos</b> cadastrados nele.
+        </div>
+    }
+}

@@ -5,6 +5,7 @@
 <div class="d-flex m-1">
     <a asp-controller="Modulo" asp-action="Criar" class="btn btn-primary d-inline-flex m-1">Adicionar Módulos</a>
     <a asp-controller="Aula" asp-action="Criar" class="btn btn-primary d-inline-flex m-1">Adicionar Aula</a>
+    <a asp-controller="Curso" asp-action="Criar" class="btn btn-primary d-inline-flex m-1">Adicionar Curso</a>
 </div>
 @{
     if (ViewBag.listaCursos.Count > 0)
@@ -16,7 +17,7 @@
                   <div class="card-body">
                     <h5 class="card-title">@ViewBag.listaCursos[i].Titulo</h5>
                     <p class="card-text">@ViewBag.listaCursos[i].Duracao.Hours hora(s) e @ViewBag.listaCursos[i].Duracao.Minutes minuto(s).</p>
-                        <a asp-action="Listar" asp-route-id="@ViewBag.listaCursos[i].Identificador">Acessar Informações do Curso</a>
+                        <a href="Cursos/Listar/@ViewBag.listaCursos[i].Identificador">Acessar Informações do Curso</a>
                   </div>
                 </div>
             </div>

@@ -9,6 +9,7 @@ public static class UrlFunctions
         NovoTexto = NovoTexto.ToLower();
         NovoTexto = NovoTexto.Replace("ç", "c");
         NovoTexto = NovoTexto.Replace("!", "");
+        NovoTexto = NovoTexto.Replace(" - ", "-");
         NovoTexto = NovoTexto.Replace(" ", "-");
         NovoTexto = NovoTexto.Replace("#", "");
         NovoTexto = NovoTexto.Replace("$", "");
@@ -74,5 +75,17 @@ public static class UrlFunctions
         NovoTexto = NovoTexto.Replace("ª", "");
         NovoTexto = NovoTexto.Replace("º", "");
         return NovoTexto;
+    }
+
+    public static bool VerificarUrlAmigavel(string url)
+    {
+        foreach (char character in url.ToCharArray())
+        {
+            if (character != '-' && char.IsLetter(character) == false && char.IsDigit(character) == false)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
