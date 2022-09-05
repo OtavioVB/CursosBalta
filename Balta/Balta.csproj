@@ -22,4 +22,8 @@
     <ProjectReference Include="..\Balta.Infra\Balta.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+
 </Project>
