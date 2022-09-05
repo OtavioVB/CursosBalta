@@ -15,7 +15,7 @@ public class CursoController : Controller
     {
         var cursos = cursoRepository.ListarTodosOsCursos();
         ViewBag.listaCursos = cursos;
-        return View("Pages/Curso/Index.cshtml");
+        return View("Views/Curso/Index.cshtml");
     }
 
     [Route("Adicionar")]
@@ -32,7 +32,7 @@ public class CursoController : Controller
     [Route("Criar")]
     public IActionResult Criar()
     {
-        return View("Pages/Curso/Criar.cshtml");
+        return View("Views/Curso/Criar.cshtml");
     }
 
     [Route("Listar/{identificador}")]

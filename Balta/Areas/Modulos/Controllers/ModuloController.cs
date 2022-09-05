@@ -15,7 +15,7 @@ public class ModuloController : Controller
     public IActionResult Index([FromServices] IRepositoryModulo moduloRepository)
     {
         ViewBag.listaModulos = moduloRepository.ListarModulos();
-        return View("Pages/Modulo/Index.cshtml");
+        return View("Views/Modulo/Index.cshtml");
     }
 
     [Route("Adicionar")]
@@ -36,6 +36,6 @@ public class ModuloController : Controller
     public IActionResult Criar([FromServices] IRepositoryCurso repositoryCurso)
     {
         ViewBag.Cursos = repositoryCurso.ListarTodosOsCursos();
-        return View("Pages/Modulo/Criar.cshtml");
+        return View("Views/Modulo/Criar.cshtml");
     }
 }
