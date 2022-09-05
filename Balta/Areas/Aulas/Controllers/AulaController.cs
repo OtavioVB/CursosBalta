@@ -27,7 +27,7 @@ public class AulaController : Controller
         aula.IdentificadorModulo = criarNovaAula.IdentificadorModulo;
         aula.Url = UrlFunctions.ObterUrlAmigavel(criarNovaAula.Titulo);
         repositoryAula.CriarNovaAula(aula);
-        return View("Pages/Aula/Criar.cshtml");
+        return RedirectToAction("Criar");
     }
 
     [Route("Visualizar/{url}")]
