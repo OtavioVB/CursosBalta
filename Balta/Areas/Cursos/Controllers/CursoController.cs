@@ -43,7 +43,7 @@ public class CursoController : Controller
         if (numeroValido is true)
         {
             ViewBag.Curso = cursoRepository.ListarInformacoesDeCurso(valor);
-            return View();
+            return View("Pages/Curso/Listar.cshtml");
         }
         return RedirectToAction("Index");
     }
